@@ -39,7 +39,7 @@ console.log(calcul(1, 2));
 //Créer une fonction qui vérifie le contenu d’un tableau
 function controlerTableau(tableau) {
     let verifNumber = true;
-    tableau.length == 0 ? verifNumber = false : verifNumber = true;
+    !Array.isArray(tableau) ||tableau.length == 0 ? verifNumber = false : verifNumber = true;
     tableau.forEach(element => {
         if (typeof element != 'number') {
             verifNumber = false;
@@ -69,6 +69,6 @@ function moyenne(tableau) {
     return moyenne;
 }
 
-console.log(moyenne([9,19,16,15,19,14,17]));
+console.log("Moyenne d'un tableau de valeurs numériques:",moyenne([9,19,16,15,19,14,17]));
 //console.log(moyenne(['oups',19,16,15,19,14,17])); // résultat attendu "Attention ce tableau comprend des chaines de caractères"
-console.log(moyenne([]));
+console.log("Moyenne d'un tableau vide : ",moyenne([]));
