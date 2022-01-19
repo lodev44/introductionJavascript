@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP Formulaire</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script>
+        function valider() {
+           console.log(event);
+           event.preventDefault();
+           // event.stopPropagation();
+            console.log("test");
+            let eltNom = document.querySelector("#nom");
+            let eltPrenom = document.querySelector("#prenom");
+            let eltDateNaissance = document.querySelector('#dateNaiss');
+            let eltMessage = document.querySelector("#message p");
+            if(eltNom.value==="") {
+                eltMessage.innerHTML = "Le nom n'est pas renseigné";
+            }else if (eltPrenom.value==="") {
+                eltMessage.innerHTML = "Le prénom n'est pas renseigné";
+            }else if (eltDateNaissance.value==="") {
+                eltMessage.innerHTML = "La date de naissance n'est pas renseignée";
+            }else{
+                eltMessage.innerHTML = "";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <form class="m-3" action="" onsubmit="valider()" method="post">
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="nom">
+            </div>
+            <div class="mb-3">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="prenom">
+            </div>
+            <div class="mb-3">
+                <label for="dateNaiss" class="form-label">Date de naissance</label>
+                <input type="text" class="form-control" id="dateNaiss">
+            </div>
+            <button type="submit" class="ms-1 btn btn-primary">Envoyer</button>
+            <button type="reset" class="ms-1 btn btn-danger">Annuler</button>
+        </form>
+        <div id="message" class="m-3 p-2">
+            <p class="bg-danger"></p>
+        </div>
+    </div>
+</body>
+
+</html>
