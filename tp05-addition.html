@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .alert {
+            background-color: red;
+            padding: 15px;
+            width: 500px;
+        }
+    </style>
+    <script>
+        function calculSomme(evt) {
+            let number1 = Number(document.querySelector('#nb1').value);
+            let number2 = Number(document.querySelector('#nb2').value);
+            let resultat = document.querySelector('#resultat');
+            let message = document.querySelector("div p");
+            if (isNaN(number1) || isNaN(number2)) {
+                message.innerHTML = "Attention, un des champs ne contient pas de nombre mais du texte ! ";
+                message.classList.add("alert");
+            } else {
+                let somme = parseInt(number1) + parseInt(number2);
+                resultat.innerHTML = somme;
+                message.innerHTML = "";
+            }
+        }
+    </script>
+    <title>TP Adition</title>
+</head>
+
+<body>
+    <p>Entrer deux nombres pour calculer la somme :</p>
+    <input type="text" id="nb1">
+    <input type="text" id="nb2">
+    <button onClick="calculSomme()">Go</button>
+    <section id=resultat>0</section>
+    <div id="message">
+        <p></p>
+    </div>
+</body>
+
+</html>
