@@ -53,7 +53,7 @@ function rechercherMeteo(data){
       let eltTrDetail = document.createElement("tr");
       // colonne 1
       let eltTh1Det = document.createElement("td");
-      eltTh1Det.innerHTML = new Date(data.dt*1000).toLocaleDateString();
+      eltTh1Det.innerHTML = new Date(data.dt*1000).toLocaleTimeString();
       eltTrDetail.appendChild(eltTh1Det);
       // colonne 2
       let eltTh2Det = document.createElement("td");
