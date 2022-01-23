@@ -3,10 +3,7 @@ let tab2 = [-1, 12, 17, 14, 5, -9, 0, 18, -6, 0, 4, -13, 5, 7, -2, 8, -1] ;
 
 
 tab1.forEach(element=>{
-    if(tab2.find(el2=>el2==element)){
-       // console.log("elment du tableau déjà présent ",element);
-    }else {
-        //console.log("Ajour de l'élément :", element)
+    if(!tab2.includes(element)){
         tab2.push(element);
     }
 });
