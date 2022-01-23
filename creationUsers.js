@@ -60,6 +60,7 @@ function afficherUtilisateurs(data) {
 function valider() {
     console.log('valider');
     let objetUser = {};
+    //JSON.stringify(Object.fromEntries(formData.entries()))
     console.log( document.querySelector("#nom").value);
     objetUser.nom = document.querySelector("#nom").value;
     objetUser.prenom = document.querySelector("#prenom").value;
