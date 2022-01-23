@@ -1,24 +1,24 @@
 function init() {
-    let eltDiv = document.querySelector(".container");
-    let eltP = document.createElement("p");
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=Nantes&lang=fr&units=metric&appid=e7600d82a734460a8fc05666f3f03c12")
-        .then(function (reponse) {
-           // console.log("reponseRequete", reponse);
-            return reponse.json();
-        }).then(function (data) {
-          //  console.log("data", data);
-          rechercherMeteo(data);
-           
-        })
+  let eltDiv = document.querySelector(".container");
+  let eltP = document.createElement("p");
+  fetch("https://api.openweathermap.org/data/2.5/weather?q=Nantes&lang=fr&units=metric&appid=e7600d82a734460a8fc05666f3f03c12")
+    .then(function (reponse) {
+      // console.log("reponseRequete", reponse);
+      return reponse.json();
+    }).then(function (data) {
+      //  console.log("data", data);
+      rechercherMeteo(data);
+
+    })
 }
 
-function rechercherMeteo(data){
- console.log(data)
+function rechercherMeteo(data) {
+  console.log(data)
   let eltContainer = document.querySelector(".container");
   let eltTable = document.createElement("Table");
   eltTable.classList.add("table", "caption-top");
   let eltCaption = document.createElement("caption");
-  eltCaption.innerText = "Météo pour la ville de Nantes";
+  eltCaption.innerText = "Météo pour la ville de Nantes le " +  new Date(data.dt * 1000).toLocaleDateString();
   eltTable.appendChild(eltCaption);
   let donneesPolutionPays = data.pays;
   // **** Création du thead
@@ -50,29 +50,35 @@ function rechercherMeteo(data){
   eltTable.appendChild(eltTHead);
 
   //data.forEach(element => {
-      let eltTrDetail = document.createElement("tr");
-      // colonne 1
-      let eltTh1Det = document.createElement("td");
-      eltTh1Det.innerHTML = new Date(data.dt*1000).toLocaleTimeString();
-      eltTrDetail.appendChild(eltTh1Det);
-      // colonne 2
-      let eltTh2Det = document.createElement("td");
-      eltTh2Det.innerText = data.main.temp + '°';
-      eltTrDetail.appendChild(eltTh2Det);
-      // colonne 3
-      let eltTh3Det = document.createElement("td");
-      eltTh3Det.innerHTML = "<img src=\"https://openweathermap.org/img/w/" + data.weather[0].icon +".png\">";
-      eltTrDetail.appendChild(eltTh3Det);
-      // colonne 4
-      let eltTh4Det = document.createElement("td");
-      eltTh4Det.innerText = data.main.pressure + " hPA";
-      eltTrDetail.appendChild(eltTh4Det);
-       // colonne 5
-       let eltTh5Det = document.createElement("td");
-       eltTh5Det.innerText = data.wind.speed + " - " + data.wind.deg ;
-       eltTrDetail.appendChild(eltTh5Det);
+  let eltTrDetail = document.createElement("tr");
+  // colonne 1
+  let eltTh1Det = document.createElement("td");
+  eltTh1Det.innerHTML = new Date(data.dt * 1000).toLocaleTimeString();
+  eltTrDetail.appendChild(eltTh1Det);
+  // colonne 2
+  let eltTh2Det = document.createElement("td");
+  eltTh2Det.innerText = data.main.temp + '°';
+  eltTrDetail.appendChild(eltTh2Det);
+  // colonne 3
+  let eltTh3Det = document.createElement("td");
+  eltTh3Det.innerHTML = "<img src=\"https://openweathermap.org/img/w/" + data.weather[0].icon + ".png\">";
+  eltTrDetail.appendChild(eltTh3Det);
+  // colonne 4
+  let eltTh4Det = document.createElement("td");
+  eltTh4Det.innerText = data.main.pressure + " hPA";
+  eltTrDetail.appendChild(eltTh4Det);
+  // colonne 5
+  let eltTh5Det = document.createElement("td");
+  eltTh5Det.innerText = data.wind.speed ;
 
-      eltTable.appendChild(eltTrDetail);
+  let img = document.createElement('img');
+  img.src = "flechebas.jpg";
+  img.width = "60"
+  img.style.transform = "rotate(" + data.wind.deg + "deg) scale(0.9)";
+  eltTh5Det.appendChild(img);
+
+  eltTrDetail.appendChild(eltTh5Det);
+  eltTable.appendChild(eltTrDetail);
   //});
   eltContainer.appendChild(eltTable);
 }
